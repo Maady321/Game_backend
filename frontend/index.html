@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Territory Control Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="glass-header">
+            <div class="logo">Territory<span>Control</span></div>
+            <div id="status-badge" class="badge disconnected">Disconnected</div>
+        </header>
+
+        <div class="main-content">
+            
+            <!-- Sidebar Setup & Matchmaking -->
+            <aside class="sidebar">
+                <section id="auth-section" class="glass-panel">
+                    <h2>Authenticate</h2>
+                    <p class="subtitle">Join the real-time server.</p>
+                    <div class="form-group stacked">
+                        <input type="text" id="auth-username" placeholder="Username" value="player1">
+                        <input type="password" id="auth-password" placeholder="Password" value="password123">
+                        <button id="btn-login" class="btn primary">Login</button>
+                        <button id="btn-register" class="btn secondary">Register New Account</button>
+                    </div>
+                    <div id="auth-error" class="error-msg hidden"></div>
+                </section>
+
+                <section id="matchmaking-section" class="glass-panel disabled">
+                    <h2>Matchmaking</h2>
+                    <div class="profile-stats">
+                        <div class="stat-box">
+                            <span class="lbl">Player ID</span>
+                            <strong id="info-player-id">N/A</strong>
+                        </div>
+                        <div class="stat-box">
+                            <span class="lbl">Room ID</span>
+                            <strong id="info-room-id">None</strong>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button id="btn-find-match" class="btn pulse-primary" disabled>Find Match</button>
+                        <button id="btn-cancel-match" class="btn warning" disabled>Cancel</button>
+                    </div>
+                    <div id="mm-status" class="status-msg"></div>
+                </section>
+
+                <!-- Network Logs (minimized for nice UI) -->
+                <section id="log-section" class="glass-panel logs-panel">
+                    <div class="log-header">
+                        <h3>Network Stream</h3>
+                        <button id="btn-clear-logs" class="btn-text">Clear</button>
+                    </div>
+                    <div id="log-container" class="log-output"></div>
+                </section>
+            </aside>
+
+            <!-- Main Game Arena -->
+            <main id="game-section" class="game-arena disabled glass-panel">
+                <div class="arena-header">
+                    <div class="player-card self">
+                        <div class="avatar" id="my-color-avatar"></div>
+                        <div class="info">
+                            <span class="name">You</span>
+                            <span class="score" id="score-self">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="turn-orb-container">
+                        <div id="turn-indicator" class="orb waiting">Waiting...</div>
+                        <div class="turn-text" id="turn-text">Queue for match</div>
+                    </div>
+
+                    <div class="player-card opponent">
+                        <div class="info">
+                            <span class="name">Opponent</span>
+                            <span class="score" id="score-opp">0</span>
+                        </div>
+                        <div class="avatar" id="opp-color-avatar"></div>
+                    </div>
+                </div>
+
+                <div class="board-container">
+                    <!-- 10x10 Grid -->
+                    <div id="game-board" class="grid-board"></div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
