@@ -12,3 +12,4 @@ build/
 .ruff_cache/
 htmlcov/
 .coverage
+frontend/
